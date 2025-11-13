@@ -5,9 +5,10 @@ on:
     types: [opened, synchronize, reopened]
     branches:
       - develop
-  workflow_dispatch:
+  push:
     branches:
-      - develop
+      - main
+  workflow_dispatch:
 
 jobs:
     build_and_push:

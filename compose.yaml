@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    container_name: gs-2-vr-ar-workspaces
+

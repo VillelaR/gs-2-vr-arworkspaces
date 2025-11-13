@@ -2,14 +2,16 @@ name: Continuous Delivery
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
       - develop
   workflow_dispatch:
+    branches:
+      - develop
 
 jobs:
     build_and_push:
         runs-on: ubuntu-latest
-        if: github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/develop')
         steps:
             -   name: Checkout
                 uses: actions/checkout@v5

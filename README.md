@@ -150,15 +150,14 @@ O projeto possui três workflows GitHub Actions configurados:
 - Usa automaticamente o `GITHUB_TOKEN` fornecido pelo GitHub Actions
 - Não requer configuração adicional
 
-**Workflow de CD (opcional):**
-Para fazer push automático para Docker Hub, configure:
-
-1. Acesse: Settings → Secrets and variables → Actions
-2. Adicione:
-   - **Variable**: `DOCKER_USER` (seu usuário do Docker Hub)
-   - **Secret**: `DOCKER_TOKEN` (seu token do Docker Hub)
-   
-**Nota:** Se os secrets não estiverem configurados, o workflow ainda executará mas apenas fará build da imagem localmente para verificação.
+**Workflow de CD:**
+- Executa apenas em Pull Requests para a branch `develop`
+- Requer configuração de secrets para funcionar:
+  1. Acesse: Settings → Secrets and variables → Actions
+  2. Adicione:
+     - **Variable**: `DOCKER_USER` (seu usuário do Docker Hub - ex: `villelar`)
+     - **Secret**: `DOCKER_TOKEN` (seu token do Docker Hub)
+- Faz push automático da imagem para: `${{ vars.DOCKER_USER }}/gs-2-vr-ar-workspaces:latest`
 
 ## Referencias
 
